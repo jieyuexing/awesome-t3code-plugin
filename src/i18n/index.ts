@@ -32,17 +32,11 @@ function stored(): string | undefined {
   }
 }
 
-// 优先级：URL 参数 ?lang=，上次的选择，浏览器语言，最后英文。
+// 优先级：URL 参数 ?lang=，上次的选择，否则英文；不看浏览器语言。
 export function detectLanguage(): string {
   const fromUrl = normalize(new URLSearchParams(location.search).get("lang"));
   if (fromUrl) return fromUrl;
-  const fromStore = stored();
-  if (fromStore) return fromStore;
-  for (const tag of navigator.languages?.length ? navigator.languages : [navigator.language]) {
-    const code = normalize(tag);
-    if (code) return code;
-  }
-  return FALLBACK;
+  return stored() ?? FALLBACK;
 }
 
 // 同步 localStorage、URL 参数（保留其他参数和 hash）和 <html lang>。

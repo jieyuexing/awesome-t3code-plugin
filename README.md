@@ -14,7 +14,7 @@ The data lives in [ideas/ideas.json](ideas/ideas.json). Rules are in [CONTRIBUTI
 
 ## Language
 
-The page has a language switch at the top right (English and Simplified Chinese). It starts from `?lang=`, then the last choice stored in your browser, then your browser language, and falls back to English. Adding a language is described in [CONTRIBUTING.md](CONTRIBUTING.md).
+The page has a language switch at the top right (English and Simplified Chinese). It starts from `?lang=`, then the last choice stored in your browser, and otherwise shows English. Adding a language is described in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## How to vote
 
@@ -60,7 +60,7 @@ The list content (`ideas/`, `works-today.md`, docs) is dedicated to the public d
 
 ## 语言
 
-页面右上角可以切换语言（English 与简体中文）。默认先看网址里的 `?lang=`，再看浏览器里保存的上次选择，再看浏览器语言，都没有就用英文。新增语言的做法见 [CONTRIBUTING.md](CONTRIBUTING.md)。
+页面右上角可以切换语言（English 与简体中文）。默认先看网址里的 `?lang=`，再看浏览器里保存的上次选择，都没有就显示英文。新增语言的做法见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
 ## 怎么投票
 
