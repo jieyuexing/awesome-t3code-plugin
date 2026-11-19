@@ -30,8 +30,8 @@ Open an issue with the "Plugin idea" form ([.github/ISSUE_TEMPLATE/idea.yml](.gi
 pnpm install                           # once
 pnpm build                             # rebuild docs/index.html from src/ and ideas/ideas.json
 pnpm check                             # type check, validate ideas.json, confirm the page snapshot matches it
-node scripts/seed-issues.mjs           # dry run: print the issues that would be created
-node scripts/seed-issues.mjs --execute --repo OWNER/NAME   # create them (needs gh)
+node scripts/sync-issues.mjs --repo OWNER/NAME   # dry run: what would be closed, edited or created
+node scripts/sync-issues.mjs --execute --repo OWNER/NAME --model "MODEL"   # close reviewed drop/merge ideas, sync bodies, open missing issues (needs gh)
 ```
 
 `pnpm check` loads the TypeScript dictionaries in `src/i18n` directly with Node, so it needs Node 22.18 or newer (type stripping is on by default from that version, per the Node documentation).
