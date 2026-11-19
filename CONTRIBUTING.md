@@ -30,10 +30,23 @@ Not accepted as a mount: injecting into or editing the app's ASAR package, patch
 ## How to submit
 
 - **A new idea:** open an issue with the "Plugin idea" form. A maintainer may edit it or close it with a reason when it lacks a public source or breaks the rules above.
-- **A change to the seed list:** edit `ideas/ideas.json`, then run `node scripts/check.mjs --fix` and `node scripts/check.mjs`. The check validates required fields, https sources, unique slugs and mount values, and keeps the page snapshot in sync.
+- **A change to the seed list:** edit `ideas/ideas.json`, then run `pnpm build` and `pnpm check`. The check validates required fields, https sources, unique slugs, mount values and that no text contains an `@username` (GitHub would notify that person), and confirms the snapshot inside the built `docs/index.html` equals `ideas.json`.
 - **A project for [works-today.md](works-today.md):** it must use an official open entry, be usable without replacing the app, and have its license and any non-affiliation statement read from the repository on the day you submit.
 
 ## Please don't
 
 - Post this list into upstream discussions or ping upstream maintainers about it; upstream's own contribution rules discourage repeated pings.
 - Use T3 Code's logo, download links or wording that suggests the list is official.
+
+## Mining upstream discussions
+
+Ideas are collected by hand, in rounds. Nothing here is scheduled or automated.
+
+1. **Where to look.** The Ideas category of [pingdotgg/t3code discussions](https://github.com/pingdotgg/t3code/discussions) (the Q&A category rarely holds ideas). List every discussion with GraphQL, `gh api graphql` on `repository(owner: "pingdotgg", name: "t3code") { discussions(first: 100, after: $cursor) { nodes { number title closed createdAt category { name } upvoteCount comments { totalCount } } } }`, and page with the cursor.
+2. **How to rank.** Keep open discussions only (`closed: false`) and sort by `upvoteCount`, using `comments.totalCount` as the tie-break. Also scan titles with a keyword pass (plugin, extension, hook, webhook, integration, panel, widget, notification, import, provider) for lower-count posts that describe a distinct integration. Read the body of every candidate before writing it down.
+3. **What qualifies.** Something a third party could build if an extension surface existed: a UI widget or panel, an integration with another tool or service, a provider or backend, a workflow enhancement around threads, pull requests or usage. Two posts that ask for the same thing become one entry with both sources; the demand number comes from the first source and is never summed.
+4. **What does not.** Core product features and settings, bugs, performance, mobile-only changes, and requests that are only about how upstream should structure its own code. Also skip anything the upstream user docs already describe: read `docs/user/` on `main` on the day (for example voice input, the Issues page with Linear, pull request watching and webhook-triggered scheduled tasks were already documented on 2026-11-19) and anything already in `ideas.json` or in the open issues of this repository.
+5. **Record it.** Add the entry to `ideas/ideas.json` with the discussion date as the source date, the upvote and comment counts as read, and `demand.as_of` set to the day you read them; say "Single source." in the problem when it rests on one post. Write the author's handle without `@` or leave it out. Then `pnpm build && pnpm check`.
+6. **Refresh.** On later rounds, re-read the counts of existing entries, update `demand.as_of`, and set `status` to `shipped-upstream` when the docs now describe the feature.
+
+The first round (2026-11-19) read all 3,918 discussions in the repository, of which 3,159 were open, and added the entries whose sources are listed in `ideas.json`.

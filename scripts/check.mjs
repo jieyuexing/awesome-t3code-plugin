@@ -1,16 +1,15 @@
 #!/usr/bin/env node
-// 校验 ideas/ideas.json，并检查 docs/index.html 内嵌快照与它一致。
+// 校验 ideas/ideas.json，并检查构建产物 docs/index.html 内嵌的快照与它一致。
 // 用法：node scripts/check.mjs [ideas.json 路径]   只校验该文件
-//       node scripts/check.mjs                     校验默认文件并核对页面快照
-//       node scripts/check.mjs --fix               用 ideas.json 重写页面快照
-import { readFileSync, writeFileSync } from "node:fs";
+//       node scripts/check.mjs                     校验默认文件并核对页面快照（不一致就先 pnpm build）
+import { readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 export const MOUNT_TYPES = ["custom-css", "mcp", "skill", "standalone-page", "needs-plugin-api"];
 export const STATUSES = ["open", "built", "shipped-upstream"];
-const SNAPSHOT = /\/\*IDEAS:START\*\/[\s\S]*?\/\*IDEAS:END\*\//;
+const SNAPSHOT = /<script id="ideas-data" type="application\/json">([\s\S]*?)<\/script>/;
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
 
 const isText = (v) => typeof v === "string" && v.trim() !== "";
@@ -62,11 +61,8 @@ export function validate(doc) {
   return errors;
 }
 
-export const snapshotBlock = (doc) => `/*IDEAS:START*/${JSON.stringify(doc).replaceAll("<", "\\u003c")}/*IDEAS:END*/`;
-
 function main() {
   const args = process.argv.slice(2);
-  const fix = args.includes("--fix");
   const fileArg = args.find((a) => !a.startsWith("--"));
   const ideasPath = fileArg ? resolve(fileArg) : resolve(root, "ideas/ideas.json");
   let doc;
@@ -83,18 +79,14 @@ function main() {
     process.exit(1);
   }
   if (!fileArg) {
-    const pagePath = resolve(root, "docs/index.html");
-    const page = readFileSync(pagePath, "utf8");
-    if (!SNAPSHOT.test(page)) {
-      console.error("FAIL docs/index.html 缺少 /*IDEAS:START*/…/*IDEAS:END*/ 快照标记");
+    const page = readFileSync(resolve(root, "docs/index.html"), "utf8");
+    const embedded = SNAPSHOT.exec(page)?.[1];
+    if (embedded === undefined) {
+      console.error('FAIL docs/index.html 缺少 <script id="ideas-data"> 快照，运行 pnpm build');
       process.exit(1);
     }
-    const next = page.replace(SNAPSHOT, () => snapshotBlock(doc));
-    if (fix) {
-      writeFileSync(pagePath, next);
-      console.log("已用 ideas.json 重写页面快照");
-    } else if (next !== page) {
-      console.error("FAIL docs/index.html 内嵌快照与 ideas/ideas.json 不一致，运行 node scripts/check.mjs --fix");
+    if (JSON.stringify(JSON.parse(embedded)) !== JSON.stringify(doc)) {
+      console.error("FAIL docs/index.html 内嵌快照与 ideas/ideas.json 不一致，运行 pnpm build");
       process.exit(1);
     }
   }

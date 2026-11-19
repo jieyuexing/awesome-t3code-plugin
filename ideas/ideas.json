@@ -578,6 +578,353 @@
         "note": "No documented open entry adds a per-message action or stores a pin list."
       },
       "status": "open"
+    },
+    {
+      "slug": "sandbox-environment-providers",
+      "title": "On-demand cloud sandbox environments through pluggable providers",
+      "title_zh": "按需创建云端沙箱环境的可插拔提供方",
+      "problem": "Asks for environments created on demand for each task or worktree through a user-configured sandbox broker or per-backend drivers (Boat, Daytona and similar), so no always-on server has to be kept. T3 would then connect through its existing remote or pairing flow. Two separate posts describe the same need; counts are not added.",
+      "category": "platform",
+      "sources": [
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/18019",
+          "title": "[Feature]: On-demand cloud task environments through an external sandbox broker",
+          "date": "2026-10-02"
+        },
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/27949",
+          "title": "Provision sandbox environments from Settings (Boat, Daytona, Vercel, Upstash, Celesto + any driver)",
+          "date": "2026-10-31"
+        }
+      ],
+      "demand": {
+        "basis": "discussion",
+        "upvotes": 18,
+        "comments": 11,
+        "url": "https://github.com/pingdotgg/t3code/discussions/18019",
+        "as_of": "2026-11-19"
+      },
+      "mount_today": {
+        "type": "needs-plugin-api",
+        "note": "Creating and tearing down environments needs a host hook; MCP, Skills and Custom CSS cannot add an environment provider."
+      },
+      "status": "open"
+    },
+    {
+      "slug": "workspace-providers",
+      "title": "Pluggable workspace providers instead of a fixed git worktree",
+      "title_zh": "可插拔的工作区提供方（不止 git worktree）",
+      "problem": "Asks for pluggable create and remove commands for a thread's isolated workspace, for example copy-on-write clones or Worktrunk, with support for non-git directories and cleanup when a thread settles. A second post offers a Worktrunk integration as an optional worktree manager.",
+      "category": "git",
+      "sources": [
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/11266",
+          "title": "Workspace providers: pluggable create/remove commands (rift, CoW clones, Worktrunk), with support for non-git directories and cleanup on settle",
+          "date": "2026-09-11"
+        },
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/8953",
+          "title": "Should I submit my Git/worktree workflow improvements to upstream?",
+          "date": "2026-08-31"
+        }
+      ],
+      "demand": {
+        "basis": "discussion",
+        "upvotes": 15,
+        "comments": 4,
+        "url": "https://github.com/pingdotgg/t3code/discussions/11266",
+        "as_of": "2026-11-19"
+      },
+      "mount_today": {
+        "type": "needs-plugin-api",
+        "note": "Workspace creation is built into the server; no official open entry lets an outside tool replace it."
+      },
+      "status": "open"
+    },
+    {
+      "slug": "source-control-provider-extension",
+      "title": "Extension point for custom source control providers",
+      "title_zh": "自定义代码托管提供方的扩展点",
+      "problem": "Asks for a minimal extension point so CLI-backed providers can add change-request features (create, list, status, checkout) for hosts that T3 does not recognize, such as an internal review system, without keeping a fork. Single source.",
+      "category": "git",
+      "sources": [
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/13112",
+          "title": "Pluggable source control providers (custom CLI-backed providers for unsupported hosts)",
+          "date": "2026-09-22"
+        }
+      ],
+      "demand": {
+        "basis": "discussion",
+        "upvotes": 6,
+        "comments": 5,
+        "url": "https://github.com/pingdotgg/t3code/discussions/13112",
+        "as_of": "2026-11-19"
+      },
+      "mount_today": {
+        "type": "needs-plugin-api",
+        "note": "The provider list is a closed set in the app's contracts; nothing official lets a third party add one."
+      },
+      "status": "open"
+    },
+    {
+      "slug": "outbound-lifecycle-webhooks",
+      "title": "Outbound webhooks and local hooks for turn and thread events",
+      "title_zh": "回合与线程事件的外发 webhook 与本地钩子",
+      "problem": "Asks for a user-configurable outbound callback when a turn or thread reaches a terminal state, so supervisors, CI or local notifiers (sound or desktop alerts) can react. Scheduled tasks can already be triggered by an inbound webhook; this is the opposite direction. Two posts, counts not added.",
+      "category": "orchestration",
+      "sources": [
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/6933",
+          "title": "Feature: configurable outbound completion webhook for turn/thread terminal events",
+          "date": "2026-08-10"
+        },
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/6686",
+          "title": "Feature request: local lifecycle hooks / notification integration for tools like peon-ping",
+          "date": "2026-03-07"
+        }
+      ],
+      "demand": {
+        "basis": "discussion",
+        "upvotes": 5,
+        "comments": 3,
+        "url": "https://github.com/pingdotgg/t3code/discussions/6933",
+        "as_of": "2026-11-19"
+      },
+      "mount_today": {
+        "type": "needs-plugin-api",
+        "note": "There is no official outbound event or hook surface to subscribe to; polling through MCP was not tested."
+      },
+      "status": "open"
+    },
+    {
+      "slug": "app-sdk-custom-surfaces",
+      "title": "Local app SDK and URL-backed custom project surfaces",
+      "title_zh": "本地应用 SDK 与按网址挂载的自定义面板",
+      "problem": "An RFC for a typed client over the server's existing endpoints and an \"Add plugin\" surface that opens your own web app inside T3 and hands it a one-time code, so the page can read threads and dispatch turns. The author marks the original text as outdated and reduces it to an MVP. Single source.",
+      "category": "platform",
+      "sources": [
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/6977",
+          "title": "[RFC]: Local app integration SDK and custom project surfaces MVP",
+          "date": "2026-08-13"
+        }
+      ],
+      "demand": {
+        "basis": "discussion",
+        "upvotes": 8,
+        "comments": 1,
+        "url": "https://github.com/pingdotgg/t3code/discussions/6977",
+        "as_of": "2026-11-19"
+      },
+      "mount_today": {
+        "type": "needs-plugin-api",
+        "note": "Embedding your own page as a panel needs a host surface; a standalone page beside T3 is not the same thing."
+      },
+      "status": "open"
+    },
+    {
+      "slug": "quota-aware-provider-routing",
+      "title": "Quota-aware account selection and automatic fallback provider",
+      "title_zh": "按剩余额度选账号并在触顶时自动换提供方",
+      "problem": "Asks T3 to track remaining quota per account and pick the one with the most headroom for a new task, and to hand off to a configured fallback provider when a usage limit is hit instead of waiting for the reset. Two posts, counts not added.",
+      "category": "usage-cost",
+      "sources": [
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/15846",
+          "title": "Option to automatically hand off to a fallback provider when hitting usage limits",
+          "date": "2026-10-05"
+        },
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/6923",
+          "title": "[Feature]: Auto-select the account with the most remaining quota before starting a task",
+          "date": "2026-08-09"
+        }
+      ],
+      "demand": {
+        "basis": "discussion",
+        "upvotes": 13,
+        "comments": 6,
+        "url": "https://github.com/pingdotgg/t3code/discussions/15846",
+        "as_of": "2026-11-19"
+      },
+      "mount_today": {
+        "type": "needs-plugin-api",
+        "note": "Switching account or provider mid-thread needs a host API; MCP can read usage once exposed, but cannot change the thread's provider."
+      },
+      "status": "open"
+    },
+    {
+      "slug": "discord-rich-presence",
+      "title": "Discord Rich Presence for coding activity",
+      "title_zh": "把编码状态显示到 Discord 的 Rich Presence",
+      "problem": "Proposes an off-by-default desktop setting that publishes project name, model or agent activity through the local Discord client. The author asked the maintainers for scope approval before continuing. Single source.",
+      "category": "other",
+      "sources": [
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/18348",
+          "title": "Optional desktop Discord Rich Presence (scope approval request)",
+          "date": "2026-10-11"
+        }
+      ],
+      "demand": {
+        "basis": "discussion",
+        "upvotes": 4,
+        "comments": 4,
+        "url": "https://github.com/pingdotgg/t3code/discussions/18348",
+        "as_of": "2026-11-19"
+      },
+      "mount_today": {
+        "type": "needs-plugin-api",
+        "note": "A desktop-side integration that reads thread activity needs an official event source."
+      },
+      "status": "open"
+    },
+    {
+      "slug": "preview-browser-login-fill",
+      "title": "Safe login fill for the preview browser",
+      "title_zh": "预览浏览器里的安全登录填充",
+      "problem": "Two posts describe testing apps that need a login in the preview browser: one asks for project-scoped test credential profiles that agents can use without the secret crossing the model boundary, the other for a password manager (Enpass) extension. The official docs describe a 1Password secret provider and private secret requests; neither post is about that path. Counts not added.",
+      "category": "other",
+      "sources": [
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/7346",
+          "title": "Secure project-scoped credential profiles for preview-browser test logins",
+          "date": "2026-08-17"
+        },
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/30196",
+          "title": "Fill logins from Enpass in the preview browser",
+          "date": "2026-11-03"
+        }
+      ],
+      "demand": {
+        "basis": "discussion",
+        "upvotes": 7,
+        "comments": 5,
+        "url": "https://github.com/pingdotgg/t3code/discussions/7346",
+        "as_of": "2026-11-19"
+      },
+      "mount_today": {
+        "type": "needs-plugin-api",
+        "note": "Filling fields in the embedded browser needs a host hook; untested whether the existing secret requests could carry it."
+      },
+      "status": "open"
+    },
+    {
+      "slug": "turn-stats-footer",
+      "title": "Compact per-turn stats footer",
+      "title_zh": "每回合的紧凑统计页脚",
+      "problem": "Asks for a small row under each response showing model and effort, tokens per second, token count, time to first token and tool-call count, so a long coding run is easy to audit. Single source.",
+      "category": "ui-surfaces",
+      "sources": [
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/17967",
+          "title": "[Feature]: Add compact per-turn session stats footer",
+          "date": "2026-05-05"
+        }
+      ],
+      "demand": {
+        "basis": "discussion",
+        "upvotes": 9,
+        "comments": 11,
+        "url": "https://github.com/pingdotgg/t3code/discussions/17967",
+        "as_of": "2026-11-19"
+      },
+      "mount_today": {
+        "type": "needs-plugin-api",
+        "note": "Adding to the message footer needs a host UI contribution point."
+      },
+      "status": "open"
+    },
+    {
+      "slug": "composer-prompt-snippets",
+      "title": "Saved prompt snippets in the composer",
+      "title_zh": "输入框里的常用提示词片段",
+      "problem": "Asks for named, optionally grouped snippets that are searchable from the composer and inserted into the draft without sending, for repeated PR, review or CI prompts. Single source.",
+      "category": "skills-mcp",
+      "sources": [
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/6712",
+          "title": "[Feature]: Saved snippets for frequently used prompts, with optional grouping",
+          "date": "2026-03-29"
+        }
+      ],
+      "demand": {
+        "basis": "discussion",
+        "upvotes": 4,
+        "comments": 2,
+        "url": "https://github.com/pingdotgg/t3code/discussions/6712",
+        "as_of": "2026-11-19"
+      },
+      "mount_today": {
+        "type": "needs-plugin-api",
+        "note": "A Skill can carry a repeated prompt, but it is not an insert-only draft snippet; a composer extension would be needed."
+      },
+      "status": "open"
+    },
+    {
+      "slug": "external-session-import",
+      "title": "Import and continue sessions from Claude Code and Codex",
+      "title_zh": "导入并接续 Claude Code、Codex 的会话",
+      "problem": "Asks to browse sessions stored by Claude Code or Codex on the same machine, resume them in T3 with their history, and optionally continue them in the CLI afterwards. One post notes the Codex files already sit in the local sessions folder. Two posts, counts not added.",
+      "category": "other",
+      "sources": [
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/6873",
+          "title": "[Feature]: continue threads from claude code",
+          "date": "2026-08-04"
+        },
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/6680",
+          "title": "request: import or recreate sessions from Codex",
+          "date": "2026-03-07"
+        }
+      ],
+      "demand": {
+        "basis": "discussion",
+        "upvotes": 24,
+        "comments": 20,
+        "url": "https://github.com/pingdotgg/t3code/discussions/6873",
+        "as_of": "2026-11-19"
+      },
+      "mount_today": {
+        "type": "needs-plugin-api",
+        "note": "Creating a thread with imported history needs a host API; the user docs only describe importing from older T3 versions and browsers."
+      },
+      "status": "open"
+    },
+    {
+      "slug": "pr-event-thread-wake",
+      "title": "Wake or snooze a thread on pull request events",
+      "title_zh": "按 PR 事件唤醒或暂缓线程",
+      "problem": "Asks for a snooze mode that keeps a thread out of the way until its linked pull request gets a review, comment, check result or conflict, and for waking a watched thread when the PR merges or a review bot reacts. Pull request watching exists in the docs; these are the waits it does not cover. Two posts, counts not added.",
+      "category": "orchestration",
+      "sources": [
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/16459",
+          "title": "Snooze a thread until its pull request changes",
+          "date": "2026-10-06"
+        },
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/16795",
+          "title": "Wake a watched PR's thread when it merges or closes, and when a review bot reacts",
+          "date": "2026-10-07"
+        }
+      ],
+      "demand": {
+        "basis": "discussion",
+        "upvotes": 18,
+        "comments": 8,
+        "url": "https://github.com/pingdotgg/t3code/discussions/16459",
+        "as_of": "2026-11-19"
+      },
+      "mount_today": {
+        "type": "needs-plugin-api",
+        "note": "Waking a thread needs host thread control; MCP tools cannot snooze or wake a thread from outside."
+      },
+      "status": "open"
     }
   ]
 }

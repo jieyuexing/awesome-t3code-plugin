@@ -14,7 +14,7 @@ The data lives in [ideas/ideas.json](ideas/ideas.json). Rules are in [CONTRIBUTI
 
 ## How to vote
 
-Every idea is one GitHub issue labelled `idea`. Add a 👍 reaction to the issue you want. The static page in [docs/index.html](docs/index.html) reads those reactions with one GitHub API request when you open it and sorts by them. If the request fails, it falls back to the upstream upvotes stored in `ideas.json` and says so.
+Every idea is one GitHub issue labelled `idea`. Add a 👍 reaction to the issue you want. The static page ([docs/index.html](docs/index.html), built from `src/`) reads those reactions with one GitHub API request when you open it and sorts by them. If the request fails, it falls back to the upstream upvotes stored in `ideas.json` and says so.
 
 ## How to submit
 
@@ -23,17 +23,18 @@ Open an issue with the "Plugin idea" form ([.github/ISSUE_TEMPLATE/idea.yml](.gi
 ## Maintaining
 
 ```sh
-node scripts/check.mjs                 # validate ideas.json and the page snapshot
-node scripts/check.mjs --fix           # rewrite the page snapshot from ideas.json
+pnpm install                           # once
+pnpm build                             # rebuild docs/index.html from src/ and ideas/ideas.json
+pnpm check                             # type check, validate ideas.json, confirm the page snapshot matches it
 node scripts/seed-issues.mjs           # dry run: print the issues that would be created
 node scripts/seed-issues.mjs --execute --repo OWNER/NAME   # create them (needs gh)
 ```
 
-The repository owner and name used by the page are set in one place, the `CONFIG` constant at the top of the script in `docs/index.html`. The seed script takes the repository from `--repo`.
+The page is a React + Tailwind CSS + shadcn/ui app in `src/`, built by `scripts/build.mjs` into one self-contained `docs/index.html` (CSS and JS inlined, no CDN or web fonts). The built file is committed because GitHub Pages publishes it directly. The repository owner and name used by the page are set in one place, `src/config.ts`. The seed script takes the repository from `--repo`.
 
 ## License
 
-The list content (`ideas/`, `works-today.md`, docs) is dedicated to the public domain under [CC0-1.0](LICENSE). The scripts in `scripts/` and `docs/index.html` are covered by the same CC0-1.0 dedication. Linked projects keep their own licenses.
+The list content (`ideas/`, `works-today.md`, docs) is dedicated to the public domain under [CC0-1.0](LICENSE). The scripts in `scripts/`, the app in `src/` and the built `docs/index.html` are covered by the same CC0-1.0 dedication. Linked projects keep their own licenses.
 
 ---
 
