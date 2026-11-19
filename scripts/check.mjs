@@ -56,6 +56,8 @@ export function validate(doc) {
     if (!isText(m?.note)) bad("mount_today.note 缺失");
     if (m?.docs !== undefined && !isHttps(m.docs)) bad("mount_today.docs 必须是 https 链接");
     if (!STATUSES.includes(idea?.status)) bad(`status 必须是 ${STATUSES.join(" / ")} 之一`);
+    // 文字会原样进 issue 正文，GitHub 会通知被 @ 的人。
+    if (/(^|[^\w`])@[A-Za-z0-9-]/.test(JSON.stringify(idea))) bad("不得含 @用户名，GitHub 会通知对方；写不带 @ 的用户名");
   });
   return errors;
 }
