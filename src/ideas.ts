@@ -2,15 +2,29 @@ import { CONFIG } from "./config";
 
 export type MountType = "custom-css" | "mcp" | "skill" | "standalone-page" | "needs-plugin-api";
 
+export type Value = "high" | "medium" | "low";
+export const VALUES: Value[] = ["high", "medium", "low"];
+
+export interface Review {
+  value: Value;
+  reasons: string;
+  reasons_zh?: string;
+  as_of: string;
+  action: string;
+}
+
+// 带 _zh 等后缀的字段是其他语言的版本，用户从 issue 提交的想法没有，页面回落英文。
 export interface Idea {
   slug: string;
   title: string;
-  title_zh: string;
+  title_zh?: string;
   problem: string;
+  problem_zh?: string;
   category: string;
   sources: { url: string; title: string; date: string }[];
   demand: { basis: "discussion" | "comment"; upvotes: number; comments?: number; url: string; as_of: string } | null;
-  mount_today: { type: MountType; note: string; docs?: string };
+  mount_today: { type: MountType; note: string; note_zh?: string; docs?: string };
+  review?: Review;
   status: string;
   votes: number;
   issueUrl: string | null;
@@ -31,13 +45,7 @@ interface Issue {
   reactions?: { "+1"?: number };
 }
 
-export const MOUNT_LABEL: Record<MountType, string> = {
-  "custom-css": "Custom CSS theme",
-  mcp: "MCP server",
-  skill: "Skill",
-  "standalone-page": "Standalone page",
-  "needs-plugin-api": "Needs a plugin API",
-};
+export const MOUNT_TYPES: MountType[] = ["custom-css", "mcp", "skill", "standalone-page", "needs-plugin-api"];
 
 export function readSnapshot(): Snapshot {
   return JSON.parse(document.getElementById("ideas-data")!.textContent!);
@@ -73,12 +81,12 @@ export function mergeIssues(snapshot: Snapshot, issues: Issue[]): Idea[] {
     extra.push({
       slug: `issue-${issue.number}`,
       title: issue.title.replace(/^\[idea\]\s*/i, ""),
-      title_zh: s["Title (中文)"] ?? "",
+      title_zh: s["Title (中文)"] || undefined,
       problem: s["Problem"] ?? "",
       category: s["Category"] || "other",
       sources: [],
       demand: null,
-      mount_today: { type: mount in MOUNT_LABEL ? mount : "needs-plugin-api", note: s["Why that mount"] ?? "" },
+      mount_today: { type: MOUNT_TYPES.includes(mount) ? mount : "needs-plugin-api", note: s["Why that mount"] ?? "" },
       status: "open",
       votes,
       issueUrl: issue.html_url,
@@ -111,8 +119,9 @@ export function sortIdeas(list: Idea[], live: boolean): Idea[] {
   );
 }
 
-export function matches(i: Idea, query: string): boolean {
+// 搜索同时匹配各语言的标题与问题描述，以及分类的当前显示名。
+export function matches(i: Idea, query: string, categoryName: string): boolean {
   const q = query.trim().toLowerCase();
   if (!q) return true;
-  return [i.title, i.title_zh, i.problem, i.category].some((t) => t.toLowerCase().includes(q));
+  return [i.title, i.title_zh, i.problem, i.problem_zh, i.category, categoryName].some((t) => t?.toLowerCase().includes(q));
 }

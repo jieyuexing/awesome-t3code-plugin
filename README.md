@@ -7,10 +7,14 @@ A list of plugin ideas collected from public T3 Code discussions. If an official
 ## What is collected
 
 - Ideas that someone already described in public, each with its public source link and date. Nothing is invented and nothing comes from private messages or email.
-- For each idea: the problem, a category, the upstream demand (upvotes on the source discussion or comment, with the day it was read), and a `mount_today` value with one sentence of reasoning.
+- For each idea: the problem (in English and Simplified Chinese), a category, the upstream demand (upvotes on the source discussion or comment, with the day it was read), a `mount_today` value with one sentence of reasoning, and a short value review (`high`, `medium` or `low`, with reasons and a suggested action).
 - [works-today.md](works-today.md): small projects that already work without a fork.
 
 The data lives in [ideas/ideas.json](ideas/ideas.json). Rules are in [CONTRIBUTING.md](CONTRIBUTING.md): official open entries only, no ASAR injection or app patching.
+
+## Language
+
+The page has a language switch at the top right (English and Simplified Chinese). It starts from `?lang=`, then the last choice stored in your browser, then your browser language, and falls back to English. Adding a language is described in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## How to vote
 
@@ -51,6 +55,10 @@ The list content (`ideas/`, `works-today.md`, docs) is dedicated to the public d
 - [works-today.md](works-today.md)：现在就能用、不需要 fork 的小件。
 
 数据在 [ideas/ideas.json](ideas/ideas.json)，收录标准见 [CONTRIBUTING.md](CONTRIBUTING.md)：只收官方开放入口，不收 ASAR 注入或改应用包。
+
+## 语言
+
+页面右上角可以切换语言（English 与简体中文）。默认先看网址里的 `?lang=`，再看浏览器里保存的上次选择，再看浏览器语言，都没有就用英文。新增语言的做法见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
 ## 怎么投票
 
