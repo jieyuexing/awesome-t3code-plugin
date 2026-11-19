@@ -15,9 +15,9 @@ type VoteState = { live: boolean; note: string };
 
 function ExtLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-primary underline-offset-4 hover:underline">
+    <a href={href} target="_blank" rel="noopener noreferrer" className="text-primary underline-offset-4 hover:underline">
       {children}
-      <ExternalLink className="size-3 shrink-0" aria-hidden />
+      <ExternalLink className="ml-1 inline size-3 align-[-1px]" aria-hidden />
     </a>
   );
 }

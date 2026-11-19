@@ -606,7 +606,7 @@
       },
       "mount_today": {
         "type": "needs-plugin-api",
-        "note": "Creating and tearing down environments needs a host hook; MCP, Skills and Custom CSS cannot add an environment provider."
+        "note": "The user docs read for this list describe connecting to environments that already exist; none describes a hook for provisioning one. Not checked exhaustively."
       },
       "status": "open"
     },
@@ -637,7 +637,7 @@
       },
       "mount_today": {
         "type": "needs-plugin-api",
-        "note": "Workspace creation is built into the server; no official open entry lets an outside tool replace it."
+        "note": "No documented entry replaces how a thread's workspace is created."
       },
       "status": "open"
     },
@@ -663,7 +663,7 @@
       },
       "mount_today": {
         "type": "needs-plugin-api",
-        "note": "The provider list is a closed set in the app's contracts; nothing official lets a third party add one."
+        "note": "The docs list the built-in hosting providers only; no extension point for adding one is documented."
       },
       "status": "open"
     },
@@ -693,8 +693,9 @@
         "as_of": "2026-11-19"
       },
       "mount_today": {
-        "type": "needs-plugin-api",
-        "note": "There is no official outbound event or hook surface to subscribe to; polling through MCP was not tested."
+        "type": "standalone-page",
+        "note": "The docs say an outside agent connected over MCP can read projects and threads and follow a thread with t3_thread_wait, so a small helper that watches threads and posts a webhook or plays a sound may work. Untested; a built-in event hook would still need a plugin API.",
+        "docs": "https://github.com/pingdotgg/t3code/blob/main/docs/user/outside-agents.md"
       },
       "status": "open"
     },
@@ -720,7 +721,7 @@
       },
       "mount_today": {
         "type": "needs-plugin-api",
-        "note": "Embedding your own page as a panel needs a host surface; a standalone page beside T3 is not the same thing."
+        "note": "No documented entry adds a project panel from your own page."
       },
       "status": "open"
     },
@@ -751,7 +752,8 @@
       },
       "mount_today": {
         "type": "needs-plugin-api",
-        "note": "Switching account or provider mid-thread needs a host API; MCP can read usage once exposed, but cannot change the thread's provider."
+        "note": "An outside agent can start threads with a chosen provider and model (outside-agents.md), but the docs show no tool that reads usage limits or moves an existing thread to another provider. Untested.",
+        "docs": "https://github.com/pingdotgg/t3code/blob/main/docs/user/outside-agents.md"
       },
       "status": "open"
     },
@@ -776,8 +778,9 @@
         "as_of": "2026-11-19"
       },
       "mount_today": {
-        "type": "needs-plugin-api",
-        "note": "A desktop-side integration that reads thread activity needs an official event source."
+        "type": "standalone-page",
+        "note": "A helper outside T3 could read thread state through MCP the way the desktop HUD t3buddy does (works-today.md) and publish it to the local Discord client. Untested for Rich Presence.",
+        "docs": "https://github.com/pingdotgg/t3code/blob/main/docs/user/outside-agents.md"
       },
       "status": "open"
     },
@@ -808,7 +811,7 @@
       },
       "mount_today": {
         "type": "needs-plugin-api",
-        "note": "Filling fields in the embedded browser needs a host hook; untested whether the existing secret requests could carry it."
+        "note": "No documented entry fills fields in the preview browser; untested whether the existing private secret requests (secrets.md) could carry it."
       },
       "status": "open"
     },
@@ -834,7 +837,7 @@
       },
       "mount_today": {
         "type": "needs-plugin-api",
-        "note": "Adding to the message footer needs a host UI contribution point."
+        "note": "No documented entry adds content to the message footer."
       },
       "status": "open"
     },
@@ -860,7 +863,7 @@
       },
       "mount_today": {
         "type": "needs-plugin-api",
-        "note": "A Skill can carry a repeated prompt, but it is not an insert-only draft snippet; a composer extension would be needed."
+        "note": "Prompt links (prompt-links.md) open a ready-to-send draft and a Skill can carry a repeated prompt, which approximate a snippet, but the docs describe no searchable snippet library inside the composer. Untested."
       },
       "status": "open"
     },
@@ -891,7 +894,7 @@
       },
       "mount_today": {
         "type": "needs-plugin-api",
-        "note": "Creating a thread with imported history needs a host API; the user docs only describe importing from older T3 versions and browsers."
+        "note": "The docs describe importing native sessions only for ACP agents that advertise session listing (providers-acp.md); they do not describe it for Claude Code or Codex sessions."
       },
       "status": "open"
     },
@@ -922,7 +925,7 @@
       },
       "mount_today": {
         "type": "needs-plugin-api",
-        "note": "Waking a thread needs host thread control; MCP tools cannot snooze or wake a thread from outside."
+        "note": "The docs describe pull request watching that wakes the agent on checks, comments, reviews and conflicts and ends when the pull request merges or closes (source-control.md); they describe no snooze that only brings the thread back, and no wake on merge. An outside agent can read and message threads, but whether a helper could approximate this by polling pull requests was not tested."
       },
       "status": "open"
     }
