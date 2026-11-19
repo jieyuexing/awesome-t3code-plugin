@@ -29,6 +29,11 @@
           "url": "https://github.com/pingdotgg/t3code/discussions/23574",
           "title": "Plugins by repository URL: a runnable, isolated agent-proxy prototype",
           "date": "2026-10-22"
+        },
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/6977",
+          "title": "[RFC]: Local app integration SDK and custom project surfaces MVP",
+          "date": "2026-08-13"
         }
       ],
       "demand": {
@@ -74,6 +79,21 @@
           "url": "https://github.com/pingdotgg/t3code/discussions/22320",
           "title": "Pre- and post-settle hooks for any thread, including ones T3 doesn't manage a worktree for",
           "date": "2026-10-20"
+        },
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/31472#discussioncomment-19462189",
+          "title": "Right-panel registry as a first plugin slice (comment by CantrellJax on #31472)",
+          "date": "2026-11-07"
+        },
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/14938",
+          "title": "Proposal: a small internal registry for right-panel surfaces, piloted by moving Diff with no visible change",
+          "date": "2026-10-02"
+        },
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/31472#discussioncomment-19553428",
+          "title": "Hover card hook for ticket numbers (comment by lizzy-thornton on #31472)",
+          "date": "2026-11-11"
         }
       ],
       "demand": {
@@ -94,79 +114,6 @@
         "reasons_zh": "18 个 upvote、11 条评论，现在又有两条帖子要求在线程结束时挂钩子；文档里的 runOnSettle 只对工作树线程生效（thread-sidebar.md）。推断：这里大多数界面类和编排类想法都需要它。",
         "as_of": "2026-11-19",
         "action": "keep"
-      },
-      "status": "open"
-    },
-    {
-      "slug": "right-panel-surfaces",
-      "title": "Plugin-contributed right-panel surfaces with a waiting count",
-      "title_zh": "插件可贡献的右侧面板与等待计数",
-      "problem": "One commenter reports a downstream fork that adds eight right-panel surfaces through a small registry, which takes about 18 small edits to wire into upstream, and suggests a first slice limited to plugin-contributed panel surfaces with an optional waiting count. A separate proposal asks upstream for a small internal registry for right-panel surfaces, piloted by moving Diff.",
-      "problem_zh": "一位评论者提到，下游 fork 通过一个小型注册表加了八个右侧面板，接进上游要改约 18 处，并建议第一步只做“插件可贡献面板，带可选的等待计数”。另有一条提案希望上游先做一个右侧面板的内部小注册表，用迁移 Diff 面板试点。",
-      "category": "ui-surfaces",
-      "sources": [
-        {
-          "url": "https://github.com/pingdotgg/t3code/discussions/31472#discussioncomment-19462189",
-          "title": "Right-panel registry as a first plugin slice (comment by CantrellJax on #31472)",
-          "date": "2026-11-07"
-        },
-        {
-          "url": "https://github.com/pingdotgg/t3code/discussions/14938",
-          "title": "Proposal: a small internal registry for right-panel surfaces, piloted by moving Diff with no visible change",
-          "date": "2026-10-02"
-        }
-      ],
-      "demand": {
-        "basis": "comment",
-        "upvotes": 2,
-        "url": "https://github.com/pingdotgg/t3code/discussions/31472#discussioncomment-19462189",
-        "as_of": "2026-11-19"
-      },
-      "mount_today": {
-        "type": "needs-plugin-api",
-        "note": "The docs list no entry that registers a panel surface.",
-        "note_zh": "文档里没有注册面板的入口。"
-      },
-      "review": {
-        "value": "low",
-        "reasons": "A single comment with 2 upvotes plus a proposal with 1 upvote and 4 comments. It is one UI surface of the extension API that extension-hooks-settings-ui already asks for (inference).",
-        "reasons_zh": "一条评论（2 个 upvote），加一条提案（1 个 upvote、4 条评论）。它只是 extension-hooks-settings-ui 所要求的扩展 API 里的一个界面位置（推断）。",
-        "as_of": "2026-11-19",
-        "action": "merge-into:extension-hooks-settings-ui"
-      },
-      "status": "open"
-    },
-    {
-      "slug": "ticket-hover-cards",
-      "title": "Hover cards for ticket numbers in messages and thread titles",
-      "title_zh": "消息与线程标题中工单号的悬浮卡片",
-      "problem": "A commenter who built a plugin on the open plugin branch wants a hook that registers a text pattern such as ABC-1234 and supplies a hover card for matches, instead of depending on how T3 renders text. Single source.",
-      "problem_zh": "一位在公开的插件分支上做了插件的评论者，希望有个钩子能登记 ABC-1234 这样的文本模式并为命中项提供悬浮卡片，不依赖 T3 渲染文字的方式。仅此一个来源。",
-      "category": "ui-surfaces",
-      "sources": [
-        {
-          "url": "https://github.com/pingdotgg/t3code/discussions/31472#discussioncomment-19553428",
-          "title": "Hover card hook for ticket numbers (comment by lizzy-thornton on #31472)",
-          "date": "2026-11-11"
-        }
-      ],
-      "demand": {
-        "basis": "comment",
-        "upvotes": 1,
-        "url": "https://github.com/pingdotgg/t3code/discussions/31472#discussioncomment-19553428",
-        "as_of": "2026-11-19"
-      },
-      "mount_today": {
-        "type": "needs-plugin-api",
-        "note": "Matching text and drawing a card inside the chat needs a rendering hook; Custom CSS cannot read text or fetch ticket data.",
-        "note_zh": "匹配文本并在对话里画卡片需要渲染钩子；Custom CSS 读不到文字，也取不到工单数据。"
-      },
-      "review": {
-        "value": "low",
-        "reasons": "A single comment with 1 upvote, from one author's own plugin. It needs a text-rendering hook, which belongs with the UI contributions in extension-hooks-settings-ui; docs/user show hover previews only for pull request comment and commit links (source-control.md).",
-        "reasons_zh": "一条评论，1 个 upvote，出自作者自己的插件。它需要文字渲染钩子，应归入 extension-hooks-settings-ui 的界面贡献；docs/user 里只有拉取请求的评论和提交链接有悬浮预览（source-control.md）。",
-        "as_of": "2026-11-19",
-        "action": "merge-into:extension-hooks-settings-ui"
       },
       "status": "open"
     },
@@ -217,41 +164,6 @@
         "reasons_zh": "原帖 14 个 upvote（无评论），后来两条帖子要求渲染 Claude Code mod 的界面（10 个和 6 个 upvote）。需求针对的是提供方原生的 mod，T3 的插件 API 未必能覆盖（推断）；docs/user 没有这类界面。",
         "as_of": "2026-11-19",
         "action": "keep"
-      },
-      "status": "open"
-    },
-    {
-      "slug": "css-snippets",
-      "title": "Switchable CSS snippets that load after the theme",
-      "title_zh": "可单独开关、在主题之后加载的 CSS 片段",
-      "problem": "Suggests user stylesheets as the smallest useful first slice: a folder of .css files switched on in Settings → Appearance, loaded after the theme, with stable data attributes for the main window regions. Single source.",
-      "problem_zh": "建议把用户样式表作为最小的第一步：一个放 .css 文件的目录，在设置→外观里单独开关，在主题之后加载，并给主要窗口区域提供稳定的 data 属性。仅此一个来源。",
-      "category": "appearance",
-      "sources": [
-        {
-          "url": "https://github.com/pingdotgg/t3code/discussions/31472#discussioncomment-19446933",
-          "title": "User stylesheets as a first slice (comment by pouyarezvani on #31472)",
-          "date": "2026-11-06"
-        }
-      ],
-      "demand": {
-        "basis": "comment",
-        "upvotes": 4,
-        "url": "https://github.com/pingdotgg/t3code/discussions/31472#discussioncomment-19446933",
-        "as_of": "2026-11-19"
-      },
-      "mount_today": {
-        "type": "custom-css",
-        "note": "A theme's Custom CSS is applied after T3's own styles (docs/user/appearance.md), so one snippet can ship as a theme today. Switching several snippets on and off independently is what is missing.",
-        "note_zh": "主题的 Custom CSS 在 T3 自带样式之后应用（docs/user/appearance.md），所以单个片段现在就能做成主题发布；缺的是多个片段各自独立开关。",
-        "docs": "https://github.com/pingdotgg/t3code/blob/main/docs/user/appearance.md"
-      },
-      "review": {
-        "value": "low",
-        "reasons": "A single comment with 4 upvotes. A theme's Custom CSS already carries one snippet today, and switching several on and off is an appearance setting for core rather than a plugin (inference).",
-        "reasons_zh": "只有一条评论，4 个 upvote。主题的 Custom CSS 现在就能带一个片段；多个片段单独开关是核心的外观设置，不是插件（推断）。",
-        "as_of": "2026-11-19",
-        "action": "drop"
       },
       "status": "open"
     },
@@ -331,46 +243,6 @@
       "status": "open"
     },
     {
-      "slug": "waiting-on-you-dashboard",
-      "title": "Dashboard of threads waiting on you, across projects",
-      "title_zh": "跨项目的“等你处理”线程看板",
-      "problem": "Commenters on the extension-API thread describe a sidebar card per project showing its waiting-on-you queue and a coordinator dashboard across threads. Both are single comments.",
-      "problem_zh": "扩展 API 帖子下的评论者描述了两种看板：侧边栏里每个项目一张卡片，显示该项目“等你处理”的队列；以及跨线程的协调看板。两条都是单条评论。",
-      "category": "orchestration",
-      "sources": [
-        {
-          "url": "https://github.com/pingdotgg/t3code/discussions/6837#discussioncomment-19383921",
-          "title": "Per-project waiting-on-you card (comment by Anneo22 on #6837)",
-          "date": "2026-11-03"
-        },
-        {
-          "url": "https://github.com/pingdotgg/t3code/discussions/6837#discussioncomment-19273919",
-          "title": "Action list and coordinator dashboard (comment by P4rcev4l on #6837)",
-          "date": "2026-10-29"
-        }
-      ],
-      "demand": {
-        "basis": "comment",
-        "upvotes": 1,
-        "url": "https://github.com/pingdotgg/t3code/discussions/6837#discussioncomment-19383921",
-        "as_of": "2026-11-19"
-      },
-      "mount_today": {
-        "type": "mcp",
-        "note": "The official MCP server lets outside agents read projects and threads (docs/user/outside-agents.md). The t3buddy README (read 2026-11-19) says its macOS companion shows live thread state, including threads waiting on an answer, through T3's MCP server.",
-        "note_zh": "官方 MCP 服务器允许外部 Agent 读取项目和线程（docs/user/outside-agents.md）。t3buddy 的 README（2026-11-19 读取）称其 macOS 伴侣应用经 T3 的 MCP 服务器显示线程的实时状态，包括在等回答的线程。",
-        "docs": "https://github.com/pingdotgg/t3code/blob/main/docs/user/outside-agents.md"
-      },
-      "review": {
-        "value": "low",
-        "reasons": "Two single comments with 1 upvote each, both describing a status view of threads waiting on you. menu-bar-status asks for a companion status surface with 33 upvotes, and a companion app that reads thread state over MCP already exists (works-today.md).",
-        "reasons_zh": "两条评论，各 1 个 upvote，都在描述“等你处理”线程的状态视图。menu-bar-status 要的是伴侣状态界面，有 33 个 upvote，而且经 MCP 读线程状态的伴侣应用已经存在（works-today.md）。",
-        "as_of": "2026-11-19",
-        "action": "merge-into:menu-bar-status"
-      },
-      "status": "open"
-    },
-    {
       "slug": "menu-bar-status",
       "title": "System tray or menu-bar icon for background status",
       "title_zh": "系统托盘或菜单栏状态图标",
@@ -382,6 +254,16 @@
           "url": "https://github.com/pingdotgg/t3code/discussions/6889",
           "title": "[Feature]: Add a system tray or menu-bar icon for background status and controls",
           "date": "2026-08-06"
+        },
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/6837#discussioncomment-19383921",
+          "title": "Per-project waiting-on-you card (comment by Anneo22 on #6837)",
+          "date": "2026-11-03"
+        },
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/6837#discussioncomment-19273919",
+          "title": "Action list and coordinator dashboard (comment by P4rcev4l on #6837)",
+          "date": "2026-10-29"
         }
       ],
       "demand": {
@@ -418,6 +300,16 @@
           "url": "https://github.com/pingdotgg/t3code/discussions/6943",
           "title": "[Feature]: Add a Git history view",
           "date": "2026-08-11"
+        },
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/15187",
+          "title": "Review and act on working trees, branches and remotes from a Version Control panel",
+          "date": "2026-10-03"
+        },
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/12246",
+          "title": "[Feature] Project Overview - Git Branches, Threads, and Worktrees Visualization",
+          "date": "2026-09-17"
         }
       ],
       "demand": {
@@ -439,47 +331,6 @@
         "reasons_zh": "20 个 upvote、8 条评论。独立页面可以自己读 git，现在就能做；docs/user 里提交链接能在 Diff 面板打开（source-control.md），但没有历史浏览器。",
         "as_of": "2026-11-19",
         "action": "keep"
-      },
-      "status": "open"
-    },
-    {
-      "slug": "branch-worktree-overview",
-      "title": "Version-control panel for branches, worktrees, stashes and remotes",
-      "title_zh": "分支、工作树、暂存与远端的版本控制面板",
-      "problem": "Agents create branches, worktrees and commits faster than they can be tracked, and the author still opens another Git client to see which branches are ahead or behind, stashes, and remote branches. A second post shows a project overview that joins a branch graph with its threads and worktrees.",
-      "problem_zh": "Agent 创建分支、工作树和提交的速度比人跟踪得快，作者仍要打开另一个 Git 客户端，才能看哪些分支领先或落后、暂存和远端分支。另一条帖子给出一个把分支图与对应线程、工作树连起来的项目总览。",
-      "category": "git",
-      "sources": [
-        {
-          "url": "https://github.com/pingdotgg/t3code/discussions/15187",
-          "title": "Review and act on working trees, branches and remotes from a Version Control panel",
-          "date": "2026-10-03"
-        },
-        {
-          "url": "https://github.com/pingdotgg/t3code/discussions/12246",
-          "title": "[Feature] Project Overview - Git Branches, Threads, and Worktrees Visualization",
-          "date": "2026-09-17"
-        }
-      ],
-      "demand": {
-        "basis": "discussion",
-        "upvotes": 14,
-        "comments": 2,
-        "url": "https://github.com/pingdotgg/t3code/discussions/15187",
-        "as_of": "2026-11-19"
-      },
-      "mount_today": {
-        "type": "standalone-page",
-        "note": "A separate local page can read branch, worktree and stash state from git for the projects the official MCP server lists. It would sit outside T3's own UI.",
-        "note_zh": "独立的本地页面可以对官方 MCP 服务器列出的项目读取分支、工作树和暂存状态，但它在 T3 自己的界面之外。",
-        "docs": "https://github.com/pingdotgg/t3code/blob/main/docs/user/outside-agents.md"
-      },
-      "review": {
-        "value": "medium",
-        "reasons": "14 upvotes and 2 comments, plus a second post with 13 upvotes and 3 comments; both want a Git overview next to threads. Inference: one Git panel plugin would cover this and git-history-view.",
-        "reasons_zh": "14 个 upvote、2 条评论，另一条帖子 13 个 upvote、3 条评论；两者都要在线程旁边有个 Git 总览。推断：一个 Git 面板插件就能同时覆盖这条和 git-history-view。",
-        "as_of": "2026-11-19",
-        "action": "merge-into:git-history-view"
       },
       "status": "open"
     },
@@ -617,6 +468,11 @@
           "url": "https://github.com/pingdotgg/t3code/discussions/13073",
           "title": "Show token usage and estimated cost per thread",
           "date": "2026-09-22"
+        },
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/30930",
+          "title": "Per-thread cost and budgets for Claude instances behind a LiteLLM proxy, read from the proxy's API",
+          "date": "2026-11-04"
         }
       ],
       "demand": {
@@ -658,6 +514,16 @@
           "url": "https://github.com/pingdotgg/t3code/discussions/16187",
           "title": "Show provider usage limits in orchestrator_capabilities so agents can avoid rate-limited providers",
           "date": "2026-10-05"
+        },
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/15846",
+          "title": "Option to automatically hand off to a fallback provider when hitting usage limits",
+          "date": "2026-10-05"
+        },
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/6923",
+          "title": "[Feature]: Auto-select the account with the most remaining quota before starting a task",
+          "date": "2026-08-09"
         }
       ],
       "demand": {
@@ -679,41 +545,6 @@
         "reasons_zh": "16 个 upvote、7 条评论，另有一条帖子（4 个 upvote）要求在 orchestrator_capabilities 里给出同样的数据。docs/user 没有列出用量工具；它是给 T3 自己的 MCP 服务器加个小功能，quota-aware-provider-routing 以它为前提（推断）。",
         "as_of": "2026-11-19",
         "action": "keep"
-      },
-      "status": "open"
-    },
-    {
-      "slug": "proxy-priced-thread-cost",
-      "title": "Per-thread cost and budget from a proxy's own prices",
-      "title_zh": "按代理自身价格显示线程费用与预算",
-      "problem": "For a Claude instance behind a LiteLLM proxy, the author wants the cost so far in the thread priced from the proxy's rates and the remaining budget in Limits, because Usage uses a public rate table and mixes accounts. Single source.",
-      "problem_zh": "对于接在 LiteLLM 代理后的 Claude 实例，作者希望线程里的已花费用按代理自己的价格计算，并在“额度”里显示剩余预算，因为 Usage 用的是公开价目表，还把多个账号混在一起。仅此一个来源。",
-      "category": "usage-cost",
-      "sources": [
-        {
-          "url": "https://github.com/pingdotgg/t3code/discussions/30930",
-          "title": "Per-thread cost and budgets for Claude instances behind a LiteLLM proxy, read from the proxy's API",
-          "date": "2026-11-04"
-        }
-      ],
-      "demand": {
-        "basis": "discussion",
-        "upvotes": 12,
-        "comments": 0,
-        "url": "https://github.com/pingdotgg/t3code/discussions/30930",
-        "as_of": "2026-11-19"
-      },
-      "mount_today": {
-        "type": "needs-plugin-api",
-        "note": "Pricing a thread needs both T3's session data and a place to show the result in the thread; the proxy side already exposes spend and budgets over its API, per the post.",
-        "note_zh": "给线程算价既要 T3 的会话数据，也要在线程里有地方显示结果；据帖子所说，代理那边已经通过它的 API 提供花费和预算。"
-      },
-      "review": {
-        "value": "low",
-        "reasons": "12 upvotes, no comments, single source. Usage now lets you set custom model prices (usage.md), which covers part of the complaint about a public rate table; the rest, a per-thread cost, is the thread-cost-breakdown request.",
-        "reasons_zh": "12 个 upvote，无评论，仅此一个来源。Usage 现在可以设自定义模型价格（usage.md），这覆盖了“用公开价目表”的那部分抱怨；其余的线程级费用就是 thread-cost-breakdown 的需求。",
-        "as_of": "2026-11-19",
-        "action": "merge-into:thread-cost-breakdown"
       },
       "status": "open"
     },
@@ -1000,82 +831,6 @@
       "status": "open"
     },
     {
-      "slug": "app-sdk-custom-surfaces",
-      "title": "Local app SDK and URL-backed custom project surfaces",
-      "title_zh": "本地应用 SDK 与按网址挂载的自定义面板",
-      "problem": "An RFC for a typed client over the server's existing endpoints and an \"Add plugin\" surface that opens your own web app inside T3 and hands it a one-time code, so the page can read threads and dispatch turns. The author marks the original text as outdated and reduces it to an MVP. Single source.",
-      "problem_zh": "一份 RFC：给服务器现有端点做一个带类型的客户端，再加一个“添加插件”入口，在 T3 里打开你自己的网页应用，并交给它一次性验证码，让页面能读线程、发起回合。作者把原文标为过时，并缩减成一个 MVP。仅此一个来源。",
-      "category": "platform",
-      "sources": [
-        {
-          "url": "https://github.com/pingdotgg/t3code/discussions/6977",
-          "title": "[RFC]: Local app integration SDK and custom project surfaces MVP",
-          "date": "2026-08-13"
-        }
-      ],
-      "demand": {
-        "basis": "discussion",
-        "upvotes": 8,
-        "comments": 1,
-        "url": "https://github.com/pingdotgg/t3code/discussions/6977",
-        "as_of": "2026-11-19"
-      },
-      "mount_today": {
-        "type": "needs-plugin-api",
-        "note": "No documented entry adds a project panel from your own page.",
-        "note_zh": "文档里没有能从你自己的页面添加项目面板的入口。"
-      },
-      "review": {
-        "value": "low",
-        "reasons": "8 upvotes, 1 comment, single source, and its author marked the original text outdated and cut it down to an MVP. It describes one way to host plugins, which belongs with extension-system.",
-        "reasons_zh": "8 个 upvote、1 条评论，仅此一个来源，作者还把原文标为过时并缩减成 MVP。它描述的是承载插件的一种方式，应归入 extension-system。",
-        "as_of": "2026-11-19",
-        "action": "merge-into:extension-system"
-      },
-      "status": "open"
-    },
-    {
-      "slug": "quota-aware-provider-routing",
-      "title": "Quota-aware account selection and automatic fallback provider",
-      "title_zh": "按剩余额度选账号并在触顶时自动换提供方",
-      "problem": "Asks T3 to track remaining quota per account and pick the one with the most headroom for a new task, and to hand off to a configured fallback provider when a usage limit is hit instead of waiting for the reset. Two posts, counts not added.",
-      "problem_zh": "希望 T3 记录每个账号的剩余额度，并为新任务挑余量最多的账号，触顶时交给配置好的备用提供方，而不是等重置。两条帖子，数字不相加。",
-      "category": "usage-cost",
-      "sources": [
-        {
-          "url": "https://github.com/pingdotgg/t3code/discussions/15846",
-          "title": "Option to automatically hand off to a fallback provider when hitting usage limits",
-          "date": "2026-10-05"
-        },
-        {
-          "url": "https://github.com/pingdotgg/t3code/discussions/6923",
-          "title": "[Feature]: Auto-select the account with the most remaining quota before starting a task",
-          "date": "2026-08-09"
-        }
-      ],
-      "demand": {
-        "basis": "discussion",
-        "upvotes": 13,
-        "comments": 6,
-        "url": "https://github.com/pingdotgg/t3code/discussions/15846",
-        "as_of": "2026-11-19"
-      },
-      "mount_today": {
-        "type": "needs-plugin-api",
-        "note": "An outside agent can start threads with a chosen provider and model (outside-agents.md), but the docs show no tool that reads usage limits or moves an existing thread to another provider. Untested.",
-        "note_zh": "外部 Agent 可以用指定的提供方和模型启动线程（outside-agents.md），但文档里没有读取用量上限的工具，也没有把已有线程转到另一个提供方的工具。未测试。",
-        "docs": "https://github.com/pingdotgg/t3code/blob/main/docs/user/outside-agents.md"
-      },
-      "review": {
-        "value": "medium",
-        "reasons": "13 and 9 upvotes in two posts. Routing needs readable quota first (the provider-usage-via-mcp request); an orchestrating agent or plugin can then pick the account, and docs/user describe no automatic fallback.",
-        "reasons_zh": "两条帖子分别 13 个和 9 个 upvote。路由要先能读到额度（也就是 provider-usage-via-mcp 的需求），之后由负责编排的 Agent 或插件挑账号；docs/user 没有自动切换的功能。",
-        "as_of": "2026-11-19",
-        "action": "merge-into:provider-usage-via-mcp"
-      },
-      "status": "open"
-    },
-    {
       "slug": "discord-rich-presence",
       "title": "Discord Rich Presence for coding activity",
       "title_zh": "把编码状态显示到 Discord 的 Rich Presence",
@@ -1220,46 +975,6 @@
         "action": "keep"
       },
       "status": "open"
-    },
-    {
-      "slug": "external-session-import",
-      "title": "Import and continue sessions from Claude Code and Codex",
-      "title_zh": "导入并接续 Claude Code、Codex 的会话",
-      "problem": "Asks to browse sessions stored by Claude Code or Codex on the same machine, resume them in T3 with their history, and optionally continue them in the CLI afterwards. One post notes the Codex files already sit in the local sessions folder. Two posts, counts not added.",
-      "problem_zh": "希望浏览同一台机器上 Claude Code 或 Codex 保存的会话，在 T3 里带着历史接着做，之后还能回到命令行里继续。一条帖子指出 Codex 的文件已经放在本地 sessions 目录里。两条帖子，数字不相加。",
-      "category": "other",
-      "sources": [
-        {
-          "url": "https://github.com/pingdotgg/t3code/discussions/6873",
-          "title": "[Feature]: continue threads from claude code",
-          "date": "2026-08-04"
-        },
-        {
-          "url": "https://github.com/pingdotgg/t3code/discussions/6680",
-          "title": "request: import or recreate sessions from Codex",
-          "date": "2026-03-07"
-        }
-      ],
-      "demand": {
-        "basis": "discussion",
-        "upvotes": 24,
-        "comments": 20,
-        "url": "https://github.com/pingdotgg/t3code/discussions/6873",
-        "as_of": "2026-11-19"
-      },
-      "mount_today": {
-        "type": "needs-plugin-api",
-        "note": "The docs describe importing native sessions for ACP agents that advertise session listing (providers-acp.md), and the Welcome page imports Claude, Codex and Pi conversations active in the last 30 days (welcome-page.md). Neither describes browsing older sessions on demand or continuing them in the CLI afterwards.",
-        "note_zh": "文档只在 ACP Agent 声明支持会话列表时描述导入原生会话（providers-acp.md）；欢迎页会导入最近 30 天活跃的 Claude、Codex、Pi 对话（welcome-page.md）。两处都没有描述按需浏览更早的会话，或之后回到命令行继续。"
-      },
-      "review": {
-        "value": "low",
-        "reasons": "24 and 8 upvotes, but docs/user now describe a Welcome page that imports Claude, Codex and Pi conversations active in the last 30 days, up to 200 messages each, so you can continue them (welcome-page.md). What remains is browsing older sessions and returning to the CLI, which the docs do not describe.",
-        "reasons_zh": "两条帖子分别 24 个和 8 个 upvote，但 docs/user 现在有欢迎页，会导入最近 30 天活跃的 Claude、Codex、Pi 对话（每条最多 200 条消息），可以接着做（welcome-page.md）。剩下的是浏览更早的会话和回到命令行继续，文档没有描述。",
-        "as_of": "2026-11-19",
-        "action": "drop"
-      },
-      "status": "shipped-upstream"
     },
     {
       "slug": "pr-event-thread-wake",
