@@ -1,0 +1,583 @@
+{
+  "schema": 1,
+  "as_of": "2026-11-19",
+  "ideas": [
+    {
+      "slug": "extension-system",
+      "title": "Extension system and marketplace for custom integrations",
+      "title_zh": "扩展系统与扩展市场",
+      "problem": "Asks for a formal extension system so integrations, for example local model providers or custom context sources, do not have to live in the core repo. The thread is open, and later plugin proposals reference it.",
+      "category": "platform",
+      "sources": [
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/6714",
+          "title": "[Feature]: [RFC] Extension System / Marketplace for custom integrations",
+          "date": "2026-03-30"
+        },
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/31472",
+          "title": "Plugins: a working build to try before you settle the design",
+          "date": "2026-11-05"
+        }
+      ],
+      "demand": {
+        "basis": "discussion",
+        "upvotes": 24,
+        "comments": 7,
+        "url": "https://github.com/pingdotgg/t3code/discussions/6714",
+        "as_of": "2026-11-19"
+      },
+      "mount_today": {
+        "type": "needs-plugin-api",
+        "note": "There is no plugin API to build on; the discussion is the request for one."
+      },
+      "status": "open"
+    },
+    {
+      "slug": "extension-hooks-settings-ui",
+      "title": "Lifecycle hooks, settings and UI contributions for extensions",
+      "title_zh": "扩展的生命周期钩子、设置与界面贡献",
+      "problem": "Asks for a Pi-style extension API where integrations react to app and agent lifecycle events such as a turn settling, expose their own settings, and add small UI pieces like a status indicator, so no fork is needed.",
+      "category": "platform",
+      "sources": [
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/6837",
+          "title": "[Feature]: Pi-style extension API for lifecycle hooks, UI contributions, and settings",
+          "date": "2026-07-30"
+        }
+      ],
+      "demand": {
+        "basis": "discussion",
+        "upvotes": 18,
+        "comments": 11,
+        "url": "https://github.com/pingdotgg/t3code/discussions/6837",
+        "as_of": "2026-11-19"
+      },
+      "mount_today": {
+        "type": "needs-plugin-api",
+        "note": "Hooks and UI contributions need a host API; Custom CSS, MCP and Skills cannot react to app lifecycle events."
+      },
+      "status": "open"
+    },
+    {
+      "slug": "right-panel-surfaces",
+      "title": "Plugin-contributed right-panel surfaces with a waiting count",
+      "title_zh": "插件可贡献的右侧面板与等待计数",
+      "problem": "One commenter reports a downstream fork that adds eight right-panel surfaces through a small registry, which takes about 18 small edits to wire into upstream, and suggests a first slice limited to plugin-contributed panel surfaces with an optional waiting count. Single source.",
+      "category": "ui-surfaces",
+      "sources": [
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/31472#discussioncomment-19462189",
+          "title": "Right-panel registry as a first plugin slice (comment by @CantrellJax on #31472)",
+          "date": "2026-11-07"
+        }
+      ],
+      "demand": {
+        "basis": "comment",
+        "upvotes": 2,
+        "url": "https://github.com/pingdotgg/t3code/discussions/31472#discussioncomment-19462189",
+        "as_of": "2026-11-19"
+      },
+      "mount_today": {
+        "type": "needs-plugin-api",
+        "note": "The docs list no entry that registers a panel surface."
+      },
+      "status": "open"
+    },
+    {
+      "slug": "ticket-hover-cards",
+      "title": "Hover cards for ticket numbers in messages and thread titles",
+      "title_zh": "消息与线程标题中工单号的悬浮卡片",
+      "problem": "A commenter who built a plugin on the open plugin branch wants a hook that registers a text pattern such as ABC-1234 and supplies a hover card for matches, instead of depending on how T3 renders text. Single source.",
+      "category": "ui-surfaces",
+      "sources": [
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/31472#discussioncomment-19553428",
+          "title": "Hover card hook for ticket numbers (comment by @lizzy-thornton on #31472)",
+          "date": "2026-11-11"
+        }
+      ],
+      "demand": {
+        "basis": "comment",
+        "upvotes": 1,
+        "url": "https://github.com/pingdotgg/t3code/discussions/31472#discussioncomment-19553428",
+        "as_of": "2026-11-19"
+      },
+      "mount_today": {
+        "type": "needs-plugin-api",
+        "note": "Matching text and drawing a card inside the chat needs a rendering hook; Custom CSS cannot read text or fetch ticket data."
+      },
+      "status": "open"
+    },
+    {
+      "slug": "status-line-composer-bar",
+      "title": "Status line, composer bar and slash-command panes from local mods",
+      "title_zh": "本地 mod 提供状态栏、输入框上方栏与斜杠命令面板",
+      "problem": "Proposes local mods, small folders of code that add a pane beside the chat, a bar above the composer, a status line or a slash command, working with any provider. The author says it runs on their own machine; the thread has no comments.",
+      "category": "ui-surfaces",
+      "sources": [
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/16720",
+          "title": "Mods: your own interface inside T3 Code, the same with every model",
+          "date": "2026-10-07"
+        },
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/6837#discussioncomment-19383921",
+          "title": "Status-line item for subscription usage pace (comment by @Anneo22 on #6837)",
+          "date": "2026-11-03"
+        }
+      ],
+      "demand": {
+        "basis": "discussion",
+        "upvotes": 14,
+        "comments": 0,
+        "url": "https://github.com/pingdotgg/t3code/discussions/16720",
+        "as_of": "2026-11-19"
+      },
+      "mount_today": {
+        "type": "needs-plugin-api",
+        "note": "The docs list no entry that adds a bar or pane; Custom CSS styles existing elements (docs/user/appearance.md)."
+      },
+      "status": "open"
+    },
+    {
+      "slug": "css-snippets",
+      "title": "Switchable CSS snippets that load after the theme",
+      "title_zh": "可单独开关、在主题之后加载的 CSS 片段",
+      "problem": "Suggests user stylesheets as the smallest useful first slice: a folder of .css files switched on in Settings → Appearance, loaded after the theme, with stable data attributes for the main window regions. Single source.",
+      "category": "appearance",
+      "sources": [
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/31472#discussioncomment-19446933",
+          "title": "User stylesheets as a first slice (comment by @pouyarezvani on #31472)",
+          "date": "2026-11-06"
+        }
+      ],
+      "demand": {
+        "basis": "comment",
+        "upvotes": 4,
+        "url": "https://github.com/pingdotgg/t3code/discussions/31472#discussioncomment-19446933",
+        "as_of": "2026-11-19"
+      },
+      "mount_today": {
+        "type": "custom-css",
+        "note": "A theme's Custom CSS is applied after T3's own styles (docs/user/appearance.md), so one snippet can ship as a theme today. Switching several snippets on and off independently is what is missing.",
+        "docs": "https://github.com/pingdotgg/t3code/blob/main/docs/user/appearance.md"
+      },
+      "status": "open"
+    },
+    {
+      "slug": "shader-feedback-effects",
+      "title": "Opt-in shader effects as feedback to composer interaction",
+      "title_zh": "可选的输入交互着色器反馈效果",
+      "problem": "Proposes opt-in effects that react to interaction, such as droplets on keystrokes, a wave on send and a ripple on completion, explicitly not running constantly because of battery cost. The author offers to upstream it.",
+      "category": "appearance",
+      "sources": [
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/33424",
+          "title": "Opt-in, tasteful and occasional shader-driven effects in the UI",
+          "date": "2026-11-09"
+        }
+      ],
+      "demand": {
+        "basis": "discussion",
+        "upvotes": 77,
+        "comments": 1,
+        "url": "https://github.com/pingdotgg/t3code/discussions/33424",
+        "as_of": "2026-11-19"
+      },
+      "mount_today": {
+        "type": "needs-plugin-api",
+        "note": "Custom CSS is styling only (docs/user/appearance.md). Effects driven by keystrokes need script access to the page; CSS animations could only approximate them."
+      },
+      "status": "open"
+    },
+    {
+      "slug": "collapse-mcp-app-cards",
+      "title": "Collapse or hide inline MCP app cards per server",
+      "title_zh": "按服务器折叠或隐藏对话内的 MCP 应用卡片",
+      "problem": "MCP apps render inline in Claude threads, and the report shows a Jira app asking for cards up to 2,000px tall with no collapse control. Two discussions ask for a per-server collapse-by-default or a hide option.",
+      "category": "ui-surfaces",
+      "sources": [
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/31591",
+          "title": "Per-server \"collapse by default\" for MCP Apps (Atlassian's Jira cards take over Claude threads)",
+          "date": "2026-11-05"
+        },
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/30907",
+          "title": "Allow collapsing or hiding inline MCP app cards while keeping the connector enabled",
+          "date": "2026-11-04"
+        }
+      ],
+      "demand": {
+        "basis": "discussion",
+        "upvotes": 9,
+        "comments": 4,
+        "url": "https://github.com/pingdotgg/t3code/discussions/31591",
+        "as_of": "2026-11-19"
+      },
+      "mount_today": {
+        "type": "needs-plugin-api",
+        "note": "Custom CSS could only help if cards carried a stable data attribute. In apps/web/src/components/chat/McpAppFrame.tsx on main (read 2026-11-19) the only one is data-mcp-app-fullscreen, so it is not dependable."
+      },
+      "status": "open"
+    },
+    {
+      "slug": "waiting-on-you-dashboard",
+      "title": "Dashboard of threads waiting on you, across projects",
+      "title_zh": "跨项目的“等你处理”线程看板",
+      "problem": "Commenters on the extension-API thread describe a sidebar card per project showing its waiting-on-you queue and a coordinator dashboard across threads. Both are single comments.",
+      "category": "orchestration",
+      "sources": [
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/6837#discussioncomment-19383921",
+          "title": "Per-project waiting-on-you card (comment by @Anneo22 on #6837)",
+          "date": "2026-11-03"
+        },
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/6837#discussioncomment-19273919",
+          "title": "Action list and coordinator dashboard (comment by @P4rcev4l on #6837)",
+          "date": "2026-10-29"
+        }
+      ],
+      "demand": {
+        "basis": "comment",
+        "upvotes": 1,
+        "url": "https://github.com/pingdotgg/t3code/discussions/6837#discussioncomment-19383921",
+        "as_of": "2026-11-19"
+      },
+      "mount_today": {
+        "type": "mcp",
+        "note": "The official MCP server lets outside agents read projects and threads (docs/user/outside-agents.md). The t3buddy README (read 2026-11-19) says its macOS companion shows live thread state, including threads waiting on an answer, through T3's MCP server.",
+        "docs": "https://github.com/pingdotgg/t3code/blob/main/docs/user/outside-agents.md"
+      },
+      "status": "open"
+    },
+    {
+      "slug": "menu-bar-status",
+      "title": "System tray or menu-bar icon for background status",
+      "title_zh": "系统托盘或菜单栏状态图标",
+      "problem": "With T3 Code running in the background there is no system-level indicator of whether it, its backend and the local T3 Connect environment are still up. The request is a tray or menu-bar icon with status and basic controls.",
+      "category": "ui-surfaces",
+      "sources": [
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/6889",
+          "title": "[Feature]: Add a system tray or menu-bar icon for background status and controls",
+          "date": "2026-08-06"
+        }
+      ],
+      "demand": {
+        "basis": "discussion",
+        "upvotes": 33,
+        "comments": 19,
+        "url": "https://github.com/pingdotgg/t3code/discussions/6889",
+        "as_of": "2026-11-19"
+      },
+      "mount_today": {
+        "type": "mcp",
+        "note": "A separate companion app can read thread status over the official MCP server, as the t3buddy README (read 2026-11-19) describes for a desktop HUD. Lifecycle controls such as stopping the server are not among the tools listed in docs/user/outside-agents.md.",
+        "docs": "https://github.com/pingdotgg/t3code/blob/main/docs/user/outside-agents.md"
+      },
+      "status": "open"
+    },
+    {
+      "slug": "git-history-view",
+      "title": "Git history view for the active project",
+      "title_zh": "当前项目的 Git 历史视图",
+      "problem": "There is no obvious way to browse past commits inside T3 Code. The request lists a commit list with author and date, the files changed by a commit, and a diff, starting from local history only.",
+      "category": "git",
+      "sources": [
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/6943",
+          "title": "[Feature]: Add a Git history view",
+          "date": "2026-08-11"
+        }
+      ],
+      "demand": {
+        "basis": "discussion",
+        "upvotes": 20,
+        "comments": 8,
+        "url": "https://github.com/pingdotgg/t3code/discussions/6943",
+        "as_of": "2026-11-19"
+      },
+      "mount_today": {
+        "type": "standalone-page",
+        "note": "A separate local page can read git log and diffs itself and use the project list from the official MCP server. Whether it can be opened inside T3, for example in its browser panel, was not tested.",
+        "docs": "https://github.com/pingdotgg/t3code/blob/main/docs/user/outside-agents.md"
+      },
+      "status": "open"
+    },
+    {
+      "slug": "branch-worktree-overview",
+      "title": "Version-control panel for branches, worktrees, stashes and remotes",
+      "title_zh": "分支、工作树、暂存与远端的版本控制面板",
+      "problem": "Agents create branches, worktrees and commits faster than they can be tracked, and the author still opens another Git client to see which branches are ahead or behind, stashes, and remote branches.",
+      "category": "git",
+      "sources": [
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/15187",
+          "title": "Review and act on working trees, branches and remotes from a Version Control panel",
+          "date": "2026-10-03"
+        }
+      ],
+      "demand": {
+        "basis": "discussion",
+        "upvotes": 14,
+        "comments": 2,
+        "url": "https://github.com/pingdotgg/t3code/discussions/15187",
+        "as_of": "2026-11-19"
+      },
+      "mount_today": {
+        "type": "standalone-page",
+        "note": "A separate local page can read branch, worktree and stash state from git for the projects the official MCP server lists. It would sit outside T3's own UI.",
+        "docs": "https://github.com/pingdotgg/t3code/blob/main/docs/user/outside-agents.md"
+      },
+      "status": "open"
+    },
+    {
+      "slug": "skill-manager",
+      "title": "Skill manager across every provider's skill folders",
+      "title_zh": "跨各提供方 skill 目录的 Skill 管理",
+      "problem": "Skills live in different directories per provider, so users end up with duplicated copies that drift or skills only one provider sees. T3 already scans these locations for the $ picker but offers no way to see the gaps.",
+      "category": "skills-mcp",
+      "sources": [
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/15823",
+          "title": "Skill manager: view, add, edit, and link skills across every harness",
+          "date": "2026-10-05"
+        }
+      ],
+      "demand": {
+        "basis": "discussion",
+        "upvotes": 24,
+        "comments": 7,
+        "url": "https://github.com/pingdotgg/t3code/discussions/15823",
+        "as_of": "2026-11-19"
+      },
+      "mount_today": {
+        "type": "skill",
+        "note": "A Skill can tell an agent to scan the skill folders the issue lists and report duplicates and drift. It is a report, not an editing UI. T3 lists skills enabled for the provider via the $ picker (docs/user/composer.md).",
+        "docs": "https://github.com/pingdotgg/t3code/blob/main/docs/user/composer.md"
+      },
+      "status": "open"
+    },
+    {
+      "slug": "project-memory",
+      "title": "Provider-neutral project memory that agents write and you can inspect",
+      "title_zh": "各提供方通用、可查看可删除的项目记忆",
+      "problem": "Each provider keeps its own memory or only instruction files, so what an agent learned does not survive a new thread or a provider switch. The T3 MCP server has thread and project tools but nothing that persists notes.",
+      "category": "skills-mcp",
+      "sources": [
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/15858",
+          "title": "Project memory that agents can write, recall, and you can see and delete",
+          "date": "2026-10-05"
+        }
+      ],
+      "demand": {
+        "basis": "discussion",
+        "upvotes": 13,
+        "comments": 7,
+        "url": "https://github.com/pingdotgg/t3code/discussions/15858",
+        "as_of": "2026-11-19"
+      },
+      "mount_today": {
+        "type": "mcp",
+        "note": "A notes MCP server added to the provider gives agents write and recall tools today; restart the agent session after adding it (docs/user/composer.md). Viewing and deleting notes would be through that server, not a T3 screen.",
+        "docs": "https://github.com/pingdotgg/t3code/blob/main/docs/user/composer.md"
+      },
+      "status": "open"
+    },
+    {
+      "slug": "read-aloud",
+      "title": "Read assistant replies aloud",
+      "title_zh": "朗读助手回复",
+      "problem": "Asks for a per-message read-aloud action using the browser speech API or an optional cloud voice, for reading while away from the screen. A later commenter on the extension-API thread also lists read-aloud of replies.",
+      "category": "ui-surfaces",
+      "sources": [
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/6762",
+          "title": "[Feature]: Read AI responses aloud via built-in TTS (per-message \"read aloud\" action)",
+          "date": "2026-07-14"
+        },
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/6837#discussioncomment-19273919",
+          "title": "Read-aloud of replies as an extension use case (comment by @P4rcev4l on #6837)",
+          "date": "2026-10-29"
+        }
+      ],
+      "demand": {
+        "basis": "discussion",
+        "upvotes": 31,
+        "comments": 16,
+        "url": "https://github.com/pingdotgg/t3code/discussions/6762",
+        "as_of": "2026-11-19"
+      },
+      "mount_today": {
+        "type": "needs-plugin-api",
+        "note": "A per-message button needs a UI hook. An MCP app (docs/user/html-renders.md) could speak text it is handed, but whether its sandbox allows speech synthesis was not tested."
+      },
+      "status": "open"
+    },
+    {
+      "slug": "thread-cost-breakdown",
+      "title": "Token usage and estimated cost per thread",
+      "title_zh": "按线程显示 token 用量与估算费用",
+      "problem": "Asks for each thread to show total tokens split into input, output and cache, an estimated API cost marked as not a bill, and a per-model breakdown. The Usage page documents per-model breakdowns; thread-level totals are not described there.",
+      "category": "usage-cost",
+      "sources": [
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/13073",
+          "title": "Show token usage and estimated cost per thread",
+          "date": "2026-09-22"
+        }
+      ],
+      "demand": {
+        "basis": "discussion",
+        "upvotes": 24,
+        "comments": 12,
+        "url": "https://github.com/pingdotgg/t3code/discussions/13073",
+        "as_of": "2026-11-19"
+      },
+      "mount_today": {
+        "type": "needs-plugin-api",
+        "note": "Per-thread numbers sit in provider history that T3 reads for the Usage page (docs/user/usage.md); docs/user/outside-agents.md does not list a usage tool.",
+        "docs": "https://github.com/pingdotgg/t3code/blob/main/docs/user/usage.md"
+      },
+      "status": "open"
+    },
+    {
+      "slug": "provider-usage-via-mcp",
+      "title": "Expose remaining provider quota through the MCP server",
+      "title_zh": "通过 MCP 服务暴露各提供方剩余额度",
+      "problem": "With several Codex and Claude accounts, the author wants the MCP server to list each account's remaining 5-hour and weekly quota so an orchestrating agent can delegate to the account with the most left.",
+      "category": "usage-cost",
+      "sources": [
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/15137",
+          "title": "Expose the current provider usage via mcp",
+          "date": "2026-10-03"
+        }
+      ],
+      "demand": {
+        "basis": "discussion",
+        "upvotes": 16,
+        "comments": 7,
+        "url": "https://github.com/pingdotgg/t3code/discussions/15137",
+        "as_of": "2026-11-19"
+      },
+      "mount_today": {
+        "type": "needs-plugin-api",
+        "note": "It needs a new tool on T3's own MCP server; docs/user/outside-agents.md lists projects, threads, providers and models, not quota.",
+        "docs": "https://github.com/pingdotgg/t3code/blob/main/docs/user/outside-agents.md"
+      },
+      "status": "open"
+    },
+    {
+      "slug": "proxy-priced-thread-cost",
+      "title": "Per-thread cost and budget from a proxy's own prices",
+      "title_zh": "按代理自身价格显示线程费用与预算",
+      "problem": "For a Claude instance behind a LiteLLM proxy, the author wants the cost so far in the thread priced from the proxy's rates and the remaining budget in Limits, because Usage uses a public rate table and mixes accounts. Single source.",
+      "category": "usage-cost",
+      "sources": [
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/30930",
+          "title": "Per-thread cost and budgets for Claude instances behind a LiteLLM proxy, read from the proxy's API",
+          "date": "2026-11-04"
+        }
+      ],
+      "demand": {
+        "basis": "discussion",
+        "upvotes": 12,
+        "comments": 0,
+        "url": "https://github.com/pingdotgg/t3code/discussions/30930",
+        "as_of": "2026-11-19"
+      },
+      "mount_today": {
+        "type": "needs-plugin-api",
+        "note": "Pricing a thread needs both T3's session data and a place to show the result in the thread; the proxy side already exposes spend and budgets over its API, per the post."
+      },
+      "status": "open"
+    },
+    {
+      "slug": "watch-command",
+      "title": "Wake a thread when a watched command prints something",
+      "title_zh": "被监视命令有输出时唤醒线程",
+      "problem": "Pull-request watching exists, but nothing like it for other waits such as a discussion reply or a deploy. The author's workaround is an external cron job that sends a message into the thread, which T3 cannot see or stop.",
+      "category": "orchestration",
+      "sources": [
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/19879",
+          "title": "Wake a thread when a command prints something (`watch_command`)",
+          "date": "2026-10-15"
+        }
+      ],
+      "demand": {
+        "basis": "discussion",
+        "upvotes": 9,
+        "comments": 12,
+        "url": "https://github.com/pingdotgg/t3code/discussions/19879",
+        "as_of": "2026-11-19"
+      },
+      "mount_today": {
+        "type": "needs-plugin-api",
+        "note": "A script on the host can already message a thread with t3 thread send (docs/user/outside-agents.md), which is the discussion's workaround. T3 still cannot show or cancel the watch.",
+        "docs": "https://github.com/pingdotgg/t3code/blob/main/docs/user/outside-agents.md"
+      },
+      "status": "open"
+    },
+    {
+      "slug": "thread-groups-colors",
+      "title": "Manual, collapsible thread groups with optional colors",
+      "title_zh": "可手动分组、可折叠并带颜色的线程组",
+      "problem": "A project is not always the right organizing unit, so the request is user-created named groups inside a project, collapsible, with optional colors and an activity indicator on a collapsed group. The sidebar docs list a group-by-project mode (docs/user/thread-sidebar.md), which is not manual grouping.",
+      "category": "sidebar",
+      "sources": [
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/11998",
+          "title": "Manual, collapsible thread groups with optional colors",
+          "date": "2026-09-16"
+        }
+      ],
+      "demand": {
+        "basis": "discussion",
+        "upvotes": 46,
+        "comments": 13,
+        "url": "https://github.com/pingdotgg/t3code/discussions/11998",
+        "as_of": "2026-11-19"
+      },
+      "mount_today": {
+        "type": "needs-plugin-api",
+        "note": "Groups need stored data and sidebar logic; Custom CSS cannot know which thread belongs to which group."
+      },
+      "status": "open"
+    },
+    {
+      "slug": "pin-agent-responses",
+      "title": "Pin agent responses in a thread and jump between pins",
+      "title_zh": "在线程中固定回复并在固定项间跳转",
+      "problem": "Long threads bury the few answers that matter, such as the agreed plan or a root cause. The request is a pin action on a message, a per-thread pin list, and next and previous pin keybindings.",
+      "category": "ui-surfaces",
+      "sources": [
+        {
+          "url": "https://github.com/pingdotgg/t3code/discussions/16153",
+          "title": "Pin agent responses in a thread and jump between pins",
+          "date": "2026-10-05"
+        }
+      ],
+      "demand": {
+        "basis": "discussion",
+        "upvotes": 10,
+        "comments": 5,
+        "url": "https://github.com/pingdotgg/t3code/discussions/16153",
+        "as_of": "2026-11-19"
+      },
+      "mount_today": {
+        "type": "needs-plugin-api",
+        "note": "No documented open entry adds a per-message action or stores a pin list."
+      },
+      "status": "open"
+    }
+  ]
+}

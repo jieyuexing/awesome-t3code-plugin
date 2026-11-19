@@ -1,0 +1,74 @@
+name: Plugin idea
+description: Suggest an idea that came from a public T3 Code discussion
+title: "[idea] "
+labels: ["idea"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is an unofficial community list and is not affiliated with T3 Code or its maintainers.
+        Read CONTRIBUTING.md first. An idea needs at least one public https source; do not paste private messages, emails or company material.
+        Search existing issues before posting, and add a 👍 to an existing idea instead of opening a duplicate.
+  - type: input
+    id: title_zh
+    attributes:
+      label: Title (中文)
+      description: Optional Chinese title.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: One or two sentences on the problem, taken from the public source. Say when it comes from a single post.
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - platform
+        - ui-surfaces
+        - appearance
+        - orchestration
+        - git
+        - skills-mcp
+        - usage-cost
+        - sidebar
+        - other
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Public sources
+      description: One https link per line with the date, for example a discussion or comment URL. The source must be public.
+      placeholder: "- https://github.com/pingdotgg/t3code/discussions/0000 (2026-01-01)"
+    validations:
+      required: true
+  - type: input
+    id: demand
+    attributes:
+      label: Upstream demand
+      description: Upvotes on the source discussion or comment, with the day you read them, for example "14 upvotes, read 2026-11-19". Do not add counts from different sources together.
+    validations:
+      required: true
+  - type: dropdown
+    id: mount
+    attributes:
+      label: Mount today
+      description: Which official open entry could carry a minimal version now. Pick needs-plugin-api if none can.
+      options:
+        - custom-css
+        - mcp
+        - skill
+        - standalone-page
+        - needs-plugin-api
+    validations:
+      required: true
+  - type: textarea
+    id: why_mount
+    attributes:
+      label: Why that mount
+      description: One sentence with a link to the official documentation that supports it. Say "untested" if you did not try it.
+    validations:
+      required: true
