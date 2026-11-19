@@ -34,6 +34,8 @@ node scripts/seed-issues.mjs           # dry run: print the issues that would be
 node scripts/seed-issues.mjs --execute --repo OWNER/NAME   # create them (needs gh)
 ```
 
+`pnpm check` loads the TypeScript dictionaries in `src/i18n` directly with Node, so it needs Node 22.18 or newer (type stripping is on by default from that version, per the Node documentation).
+
 The page is a React + Tailwind CSS + shadcn/ui app in `src/`, built by `scripts/build.mjs` into one self-contained `docs/index.html` (CSS and JS inlined, no CDN or web fonts). The built file is committed because GitHub Pages publishes it directly. The repository owner and name used by the page are set in one place, `src/config.ts`. The seed script takes the repository from `--repo`.
 
 ## License

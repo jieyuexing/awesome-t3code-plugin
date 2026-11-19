@@ -786,8 +786,8 @@
       },
       "review": {
         "value": "medium",
-        "reasons": "46 upvotes and 13 comments, the highest among ideas that are not extension surfaces; docs/user still list only the group-by-project beta (thread-sidebar.md). It needs sidebar internals, so upstream may build it as a core feature (inference), which lowers its plugin value.",
-        "reasons_zh": "46 个 upvote、13 条评论，是不属于扩展界面的想法里最高的；docs/user 仍只有按项目分组的测试版（thread-sidebar.md）。它要用到侧边栏内部逻辑，上游可能直接做成核心功能（推断），这会降低它作为插件的价值。",
+        "reasons": "46 upvotes and 13 comments, the second highest upvote count of any idea here, after shader-feedback-effects; docs/user still list only the group-by-project beta (thread-sidebar.md). It needs sidebar internals, so upstream may build it as a core feature (inference), which lowers its plugin value.",
+        "reasons_zh": "46 个 upvote、13 条评论，全表第二高，仅次于 shader-feedback-effects；docs/user 仍只有按项目分组的测试版（thread-sidebar.md）。它要用到侧边栏内部逻辑，上游可能直接做成核心功能（推断），这会降低它作为插件的价值。",
         "as_of": "2026-11-19",
         "action": "keep"
       },
